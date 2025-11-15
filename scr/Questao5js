@@ -1,1 +1,21 @@
 
+function parseQueryString(query) {
+  const obj = {};
+
+
+  const partes = query.split("&");
+
+  partes.forEach(par => {
+    const [chave, valor] = par.split("=");
+
+    const numero = Number(valor);
+    obj[chave] = isNaN(numero) ? valor : numero;
+  });
+
+  return obj;
+}
+
+const queryString = "categoria=eletronicos&preco=500&marca=samsung&avaliacao=4.5";
+
+console.log(parseQueryString(queryString));
+
